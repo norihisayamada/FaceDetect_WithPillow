@@ -12,9 +12,9 @@ st.subheader('顔検出アプリ')
 bunnruiki = st.sidebar.radio("人間・キャラクター",('人間', 'キャラクター'))
 param = st.sidebar.slider('トリミング後の画像の大きさ', -30, 30, 15)
 
-# uploaded_file = st.file_uploader("jpg画像をアップロードしてください。")
-uploaded_file = cv.imread('Lena.jpg')
-print(uploaded_file)
+uploaded_file = st.file_uploader("jpg画像をアップロードしてください。")
+# uploaded_file = cv.imread('Lena.jpg')
+# print(uploaded_file)
 
 if uploaded_file is not None:
     try:
