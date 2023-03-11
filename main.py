@@ -4,18 +4,22 @@ from PIL import UnidentifiedImageError
 import cv2 as cv
 import numpy as np
 
-
-st.title('人間・キャラクターの顔認識アプリ')
+#important ref. file
+#https://share.streamlit.io/ohmoriyusuke/trimming-opencv-streamlit/main.py
+st.title('Face Detect app for humans and characters')
+st.subheader('顔検出アプリ')
 
 bunnruiki = st.sidebar.radio("人間・キャラクター",('人間', 'キャラクター'))
 param = st.sidebar.slider('トリミング後の画像の大きさ', -30, 30, 15)
 
-uploaded_file = st.file_uploader("jpg画像をアップロードしてください。")
+# uploaded_file = st.file_uploader("jpg画像をアップロードしてください。")
+uploaded_file = cv.imread('Lena.jpg')
+print(uploaded_file)
 
-if uploaded_file is None:
+if uploaded_file is not None:
     try:
-        img = cv.imread('Lena.jpg')
-        # img = Image.open(uploaded_file)
+        # img = cv.imread('Lena.jpg')
+        img = Image.open(uploaded_file)
         if bunnruiki == "人間":
             bunnruiki = 'haarcascade_frontalface_alt.xml'
             bunnruiki_type = "人"
