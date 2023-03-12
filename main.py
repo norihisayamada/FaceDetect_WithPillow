@@ -6,11 +6,21 @@ import numpy as np
 
 #important ref. file
 #https://share.streamlit.io/ohmoriyusuke/trimming-opencv-streamlit/main.py
+
 st.title('Face Detect app for humans and characters')
 st.subheader('顔検出アプリ')
 
 bunnruiki = st.sidebar.radio("人間・キャラクター",('人間', 'キャラクター'))
 param = st.sidebar.slider('トリミング後の画像の大きさ', -30, 30, 15)
+
+st.write('サンプルデータが必要な場合')
+with open("Einstein.jpg", "rb") as file:
+    btn = st.download_button(
+        label="Download image",
+        data=file,
+        file_name="Einstein.jpg",
+        mime="image/png"
+    )
 
 uploaded_file = st.file_uploader("jpg画像をアップロードしてください。")
 # uploaded_file = cv.imread('Lena.jpg')
@@ -123,3 +133,7 @@ if uploaded_file is not None:
     except UnidentifiedImageError as error:
         st.warning('ERROR : ' + str(error))
         st.warning('画像以外がアップロードされました。または、アップロードされた画像は認識できない画像です。')
+
+
+st.write('コードが必要な方は下記よりダウンロード又はForkしてご利用下さい')
+st.write('https://github.com/norihisayamada/FaceDetect_WithPillow')
